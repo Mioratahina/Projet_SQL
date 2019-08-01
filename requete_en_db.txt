@@ -1,0 +1,28 @@
+Ouverture de la BDD
+	=> sqlite3 chinook.db
+
+#Recuperation de tous les albums
+	=> SELECT * FROM albums;
+
+#Recuperation de tous les albums qui contient 'Great'
+	=> SELECT * FROM albums WHERE Title LIKE '%Great%';
+
+#Le nombre total d'albums
+	=>S ELECT COUNT (AlbumId) FROM albums;
+
+#Suppression des albums dont le nom contient 'music'
+	=> DELETE * FROM albums WHERE title LIKE '%music%';
+
+#Recuperation des albums ecrit par AC/DC
+	=> SELECT * FROM albums WHERE ArtistId = 1;
+
+#Recuperation de tous les titres des albums de AC/DC
+	=> SELECT title FROM albums WHERE ArtistId = 1;
+
+#Recuperation de la liste des titres de l'album 'Let There Be Rock'
+	=>SELECT title FROM albums WHERE title LIKE '%Let There Be Rock%';
+
+#Affichage du prix de cet album ainsi que sa durée total
+	=>SELECT albums.Title, tracks.UnitPrice, tracks.Milliseconds FROM trakcs
+		JOIN albums ON albums.AlbumId = tracks.TrackId
+		WHERE albums.Title = 'Let There Be Rock';
