@@ -1,0 +1,30 @@
+# MOOCADEMY
+
+CREATE TABLE 'cours' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'titre' TEXT, 'description' TEXT, 'leçon' TEXT);
+CREATE TABLE 'leçons' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'cour_id' INTEGER, 'titre' TEXT, 'body' TEXT, FOREIGN KEY (cour_id) REFERENCES cours (id));
+
+
+#THE_HACKING_PINTEREST
+
+CREATE TABLE 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'name' TEXT);
+CREATE TABLE 'pins' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'user_id' INTEGER, 'url' TEXT, FOREIGN KEY (user_id) REFERENCES user (id));
+CREATE TABLE 'comments' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'user_id' INTEGER, 'pins_id' INTEGER, 'comment' TEXT, FOREIGN KEY (user_id) REFERENCES user (id), FOREIGN KEY (pins_id) REFERENCES pins (id));
+
+
+#THE_HACKING_NEWS
+
+CREATE TABLE 'user' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'name' TEXT, 'comment' TEXT, FOREIGN KEY (comment) REFERENCES commentaires (commentaire));
+CREATE TABLE 'liens' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'user_id' INTEGER, 'lien' TEXT, FOREIGN KEY (user_id) REFERENCES user (id));
+CREATE TABLE 'commentaires' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'user_id' INTEGER, 'liens_id' INTEGER, 'commentaire' TEXT, FOREIGN KEY (user_id) REFERENCES user (id), FOREIGN KEY (liens_id) REFERENCES liens (id));
+
+
+#THE_HACKING_CLASS
+
+CREATE TABLE 'cours'(
+'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+'lesson' TEXT);
+CREATE TABLE 'eleve'(
+'id' INTEGER PRIMARY KEY AUTOINCREMENT,
+'cours_id' INTEGER,
+'name' TEXT,
+FOREIGN KEY (cours_id) REFERENCES cours(id));
